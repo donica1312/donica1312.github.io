@@ -1,5 +1,334 @@
-<html>
-  <body>
-    <h1>GitHub Pages działa!</h1>
-  </body>
-</html>
+<style>
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+}
+body, * {
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
+</style>
+<div class="dowod-container">
+    <!-- tutaj będzie reszta treści -->
+</div>
+
+<style>
+.dowod-container {
+    width: 360px;
+    height: 640px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="700" opacity="0.15"><path d="M100,100 Q200,0 300,100 T500,100" stroke="%234a90e2" stroke-width="3" fill="none"/><path d="M50,300 Q150,200 250,300 T450,300" stroke="%234a90e2" stroke-width="3" fill="none"/><path d="M0,500 Q100,400 200,500 T400,500" stroke="%234a90e2" stroke-width="3" fill="none"/></svg>');
+    background-size: cover;
+}
+</style>
+<div class="flaga"></div>
+
+<style>
+.flaga {
+    position: absolute;
+    left: 0;
+    top: 150px;
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #dc143c 50%, #dc143c 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 30% 50%, 70% 0);
+}
+</style>
+<div class="godlo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Herb_Polski.svg/800px-Herb_Polski.svg.png" alt="Godło Polski">
+    <span>Rzeczpospolita<br>Polska</span>
+</div>
+
+<style>
+.godlo {
+    position: absolute;
+    left: 20px;
+    bottom: 80px;
+    text-align: center;
+    color: #0d47a1;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1.2;
+}
+.godlo img {
+    width: 50px;
+    height: auto;
+    filter: brightness(0) invert(0) hue-rotate(200deg) saturate(5);
+}
+</style>
+<div class="zdjecie">
+    <img src="TWOJE_ZDJĘCIE_LUB_LINK" alt="Zdjęcie">
+</div>
+
+<style>
+.zdjecie {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.zdjecie img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+<div class="dane">
+    <h1>KRZYSZTOF</h1>
+    <p class="imie">Imię (imiona)</p>
+    
+    <h1>ADAMCZYK</h1>
+    <p class="nazwisko">Nazwisko</p>
+    
+    <h2>POLSKIE</h2>
+    <p class="obywatelstwo">Obywatelstwo</p>
+    
+    <h2>16.07.2007</h2>
+    <p class="data-urodzenia">Data urodzenia</p>
+    
+    <h2>07271602957</h2>
+    <p class="pesel">Numer PESEL</p>
+</div>
+
+<style>
+.dane {
+    position: absolute;
+    left: 160px;
+    top: 80px;
+    color: #0d1a3d;
+}
+.dane h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 8px 0;
+    letter-spacing: 1px;
+}
+.dane h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 12px 0 4px 0;
+}
+.dane p {
+    font-size: 12px;
+    color: #555;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+</style>
+<div class="czas">
+    Czas: <span id="live-clock"></span>
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const options = { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour12: false
+    };
+    document.getElementById('live-clock').innerText = now.toLocaleDateString('pl-PL', options).replace(',', '');
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+<style>
+.czas {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #0d47a1;
+    font-weight: bold;
+}
+</style>
+<div class="przyciski">
+    <button class="btn zielony">✔ Dokument ważny</button>
+    <button class="btn szary">📄 Potwierdź swoje dane</button>
+    <button class="btn szary">📊 Dane dokumentu</button>
+</div>
+
+<style>
+.przyciski {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    right: 20px;
+}
+.btn {
+    width: 100%;
+    padding: 16px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: left;
+    background: #f5f5f5;
+}
+.zielony {
+    background: #e8f5e9 !important;
+    color: #2e7d32;
+    font-weight: bold;
+}
+</style>
+
+<!-- ====================== GÓRNY PASEK (Wróć + tytuł + pytajnik) ====================== -->
+<div class="top-bar">
+    <button class="back-btn">← Wróć</button>
+    <h2>mDowód</h2>
+    <button class="info-btn">?</button>
+</div>
+
+<!-- ====================== DOLNE MENU NAWIGACYJNE ====================== -->
+<nav class="bottom-nav">
+    <button class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M4 13h16v-2H4v2zm0-5h16V6H4v2zm0 10h10v-2H4v2z"/></svg>
+        <span>Pulpit</span>
+    </button>
+
+    <button class="nav-item active">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        <span>Dokumenty</span>
+    </button>
+
+    <button class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <span>Usługi</span>
+    </button>
+
+    <button class="nav-item qr-btn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm-10 10h6v6H4v-6zm10 3h2v2h-2v-2zm0-3h6v6h-6v-6zm-3 3h2v2h-2v-2zm-3-3h2v2H8v-2zm3 0h2v2h-2v-2z"/></svg>
+        <span>Kod QR</span>
+    </button>
+
+    <button class="nav-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        <span>Więcej</span>
+    </button>
+</nav>
+
+<!-- ====================== STYLE DLA NOWYCH ELEMENTÓW ====================== -->
+<style>
+/* Górny pasek */
+.top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.top-bar h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d47a1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.back-btn, .info-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #0d47a1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back-btn:active, .info-btn:active {
+    background: rgba(13,71,161,0.1);
+}
+
+/* Dolne menu */
+.bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 72px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+}
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    transition: all 0.2s;
+    position: relative;
+}
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-bottom: 4px;
+}
+.nav-item span {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* Aktywny przycisk (Dokumenty) */
+.nav-item.active {
+    color: #0d47a1;
+}
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: #0d47a1;
+    border-radius: 0 0 3px 3px;
+}
+
+/* Przycisk Kod QR – większa ikona i kolor */
+.qr-btn {
+    transform: scale(1.15);
+    color: #0d47a1;
+}
+
+/* Animacja przy kliknięciu */
+.nav-item:active {
+    transform: scale(0.92);
+    background: rgba(13,71,161,0.08);
+}
+
+/* Lekko podnieś kartę dowodu, żeby nie nachodziło na dolne menu */
+.dowod-container {
+    margin: 70px auto 90px auto !important; /* góra + dół */
+}
+</style>
+
