@@ -2,154 +2,263 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#0d47a1">
-    <title>mDowód</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mDowód – Krzysztof Adamczyk</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:#f5f7fa; font-family:'Roboto Condensed',sans-serif; overflow-x:hidden; }
-        
-        /* Górny pasek */
-        .top-bar { position:fixed; top:0; left:0; right:0; height:56px; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:space-between; padding:0 16px; z-index:1000; box-shadow:0 1px 10px rgba(0,0,0,0.1); }
-        .top-bar h2 { font-size:18px; font-weight:bold; color:#0d47a1; position:absolute; left:50%; transform:translateX(-50%); }
-        .back-btn, .info-btn { background:none; border:none; font-size:28px; color:#0d47a1; cursor:pointer; }
-
-        /* Karta */
-        .card {
-            width:375px; height:812px; margin:0 auto; background:#f8fbff; position:relative; overflow:hidden;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-size="24" fill="%23cde4ff" opacity="0.15">RP</text></svg>');
-            background-size: auto, 80px 80px;
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            background: #f2f4f7;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
         }
 
-        /* Tło z falami */
-        .waves { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; opacity:0.12; }
-        .waves svg { width:150%; height:150%; position:absolute; top:-20%; left:-20%; }
+        .container {
+            width: 380px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
-        /* Zegar */
-        .czas { position:absolute; top:70px; left:0; right:0; text-align:center; font-size:16px; color:#0d47a1; font-weight:bold; z-index:10; }
+        .header {
+            background: linear-gradient(135deg, #c41f3a 0%, #e64a3a 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-        /* Zdjęcie */
+        .header .back {
+            font-size: 24px;
+        }
+
+        .header .help {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .time {
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .id-card {
+            position: relative;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 500"><path fill="%23e6f0ff" d="M0 0h380v500H0z"/><path opacity="0.4" fill="%2399c2ff" d="M100 100c50 50 150-50 200 0s100 150 0 200-150-50-200 0-100-150 0-200z"/></svg>') no-repeat center center;
+            background-size: cover;
+            padding: 40px 30px;
+            color: #1a1a1a;
+        }
+
         .photo {
-            position:absolute; left:20px; top:140px; width:120px; height:150px; border-radius:14px; overflow:hidden; border:4px solid white; box-shadow:0 8px 25px rgba(0,0,0,0.25); z-index:10;
+            width: 110px;
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+            float: left;
+            margin-right: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .photo img { width:100%; height:100%; object-fit:cover; }
 
-        /* Dane */
-        .data {
-            position:absolute; left:160px; top:140px; z-index:10; color:#0d1a3d;
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .data h1 { font-size:32px; font-weight:700; margin:4px 0; letter-spacing:1px; }
-        .data h2 { font-size:26px; font-weight:700; margin:16px 0 4px; }
-        .data p { font-size:13px; color:#555; text-transform:uppercase; letter-spacing:0.8px; margin:0; }
 
-        /* Flaga */
+        .info {
+            margin-left: 135px;
+            padding-top: 10px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .value {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
         .flag {
-            position:absolute; left:20px; top:310px; width:60px; height:100px;
-            background:linear-gradient(to bottom,#fff 50%,#dc143c 50%);
-            clip-path:polygon(0 0,100% 0,100% 100%,70% 100%,30% 50%,70% 0);
-            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+            width: 60px;
+            height: 36px;
+            background: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
+            border-radius: 4px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
 
-        /* Godło */
-        .coat {
-            position:absolute; left:20px; bottom:120px; text-align:center; color:#0d47a1; font-size:11px; font-weight:bold;
+        .coat-of-arms {
+            width: 60px;
+            height: 70px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120"><path fill="%23fff" stroke="%23000" stroke-width="2" d="M50 10 L90 40 L90 80 L50 110 L10 80 L10 40 Z"/><path fill="%23dc143c" d="M50 30 L70 45 L70 75 L50 90 L30 75 L30 45 Z"/><circle cx="50" cy="60" r="12" fill="%23fff"/></svg>') center/contain no-repeat;
+            margin: 15px 0;
         }
-        .coat img { width:50px; filter:brightness(0) saturate(100%) hue-rotate(200deg) opacity(0.8); }
 
-        /* Przyciski */
+        .pesel {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin: 20px 0;
+        }
+
         .buttons {
-            position:absolute; bottom:100px; left:20px; right:20px; z-index:10;
+            padding: 20px;
         }
-        .btn {
-            width:100%; padding:18px; margin:12px 0; border:none; border-radius:16px; font-size:17px; font-weight:600; text-align:left; background:#ffffffdd; backdrop-filter:blur(10px); box-shadow:0 4px 15px rgba(0,0,0,0.15);
-        }
-        .valid { background:#e8f5e9 !important; color:#2e7d32; }
-        .btn::after { content:"→"; float:right; font-size:20px; color:#aaa; }
 
-        /* Dolne menu */
-        .nav {
-            position:fixed; bottom:0; left:0; right:0; height:84px; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); display:flex; border-top:1px solid #ddd;
+        .btn {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        .nav button {
-            flex:1; background:none; border:none; color:#888; font-size:10px; padding-top:8px;
+
+        .btn.valid {
+            background: #e8f5e8;
+            color: #0d840d;
+            font-weight: 600;
         }
-        .nav button svg { width:26px; height:26px; fill:currentColor; margin-bottom:4px; }
-        .nav .active { color:#0d47a1; }
-        .nav .active::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:40px; height:3px; background:#0d47a1; border-radius:0 0 3px 3px; }
-        .nav .qr { transform:scale(1.25); color:#0d47a1; }
+
+        .btn.valid::before {
+            content: "✓";
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .btn .icon {
+            margin-right: 15px;
+            font-size: 24px;
+            opacity: 0.7;
+        }
+
+        .btn .arrow {
+            margin-left: auto;
+            font-size: 20px;
+            opacity: 0.5;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-item {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .footer-item.active {
+            color: #007aff;
+        }
+
+        .footer-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 <body>
 
-<div class="top-bar">
-    <button class="back-btn">← Wróć</button>
-    <h2>mDowód</h2>
-    <button class="info-btn">?</button>
-</div>
-
-<div class="card">
-    <div class="czas">Czas: <span id="clock"></span></div>
-
-    <div class="waves">
-        <svg viewBox="0 0 400 800" preserveAspectRatio="none">
-            <path d="M0,200 Q100,100 200,200 T400,200 Q300,300 200,300 T0,300" fill="none" stroke="#4a90e2" stroke-width="4" opacity="0.3"/>
-            <path d="M0,400 Q100,300 200,400 T400,400 Q300,500 200,500 T0,500" fill="none" stroke="#4a90e2" stroke-width="4" opacity="0.3"/>
-            <path d="M0,600 Q100,500 200,600 T400,600" fill="none" stroke="#4a90e2" stroke-width="4" opacity="0.3"/>
-        </svg>
+<div class="container">
+    <!-- Nagłówek -->
+    <div class="header">
+        <div class="back">‹ Wróć</div>
+        <div>mDowód</div>
+        <div class="help">?</div>
     </div>
 
-    <div class="photo">
-        <img src="https://i.imgur.com/xyz123.jpg" alt="Zdjęcie"> <!-- ZMIEŃ NA SWOJE ZDJĘCIE -->
+    <div class="time">Czas: 18:28:48 22.11.2025</div>
+
+    <!-- Karta dowodu -->
+    <div class="id-card">
+        <div class="photo">
+            <img src=" storage/emulated/0/DCIM/Camera/IMG_20250718_175306.jpg alt="Zdjęcie"> <!-- możesz wstawić własne zdjęcie -->
+        </div>
+
+        <div class="info">
+            <div class="name">KRZYSZTOF</div>
+            <div class="label">Imię (imiona)</div>
+
+            <div class="name" style="margin-top: 20px;">ADAMCZYK</div>
+            <div class="label">Nazwisko</div>
+
+            <div class="value" style="margin-top: 20px;">POLSKIE</div>
+            <div class="label">Obywatelstwo</div>
+
+            <div class="flag"></div>
+
+            <div class="value">16.07.2007</div>
+            <div class="label">Data urodzenia</div>
+
+            <div class="coat-of-arms"></div>
+            <div style="font-size: 12px; margin-bottom: 5px;">Rzeczpospolita Polska</div>
+
+            <div class="pesel">07271602957</div>
+            <div class="label">Numer PESEL</div>
+        </div>
     </div>
 
-    <div class="data">
-        <h1>KRZYSZTOF</h1>
-        <p>Imię (imiona)</p>
-        <h1>ADAMCZYK</h1>
-        <p>Nazwisko</p>
-        <h2>POLSKIE</h2>
-        <p>Obywatelstwo</p>
-        <h2>16.07.2007</h2>
-        <p>Data urodzenia</p>
-        <h2>07271602957</h2>
-        <p>Numer PESEL</p>
-    </div>
-
-    <div class="flag"></div>
-
-    <div class="coat">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Herb_Polski.svg" alt="Godło">
-        <div>Rzeczpospolita<br>Polska</div>
-    </div>
-
+    <!-- Przyciski -->
     <div class="buttons">
-        <button class="btn valid">✓ Dokument ważny</button>
-        <button class="btn">Potwierdź swoje dane</button>
-        <button class="btn">Dane dokumentu</button>
+        <div class="btn valid">Dokument ważny</div>
+        <div class="btn">
+            <span class="icon">📄</span>
+            Potwierdź swoje dane
+            <span class="arrow">›</span>
+        </div>
+        <div class="btn">
+            <span class="icon">📋</span>
+            Dane dokumentu
+            <span class="arrow">›</span>
+        </div>
+    </div>
+
+    <!-- Dolny pasek nawigacji -->
+    <div class="footer">
+        <div class="footer-item"><span class="footer-icon">🏠</span>Pulpit</div>
+        <div class="footer-item active"><span class="footer-icon">👤</span>Dokumenty</div>
+        <div class="footer-item"><span class="footer-icon">🛡️</span>Usługi</div>
+        <div class="footer-item"><span class="footer-icon">🔲</span>Kod QR</div>
+        <div class="footer-item"><span class="footer-icon">⋯</span>Więcej</div>
     </div>
 </div>
 
-<nav class="nav">
-    <button><svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Pulpit</button>
-    <button class="active"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>Dokumenty</button>
-    <button><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Usługi</button>
-    <button class="qr"><svg viewBox="0 0 24 24"><path d="M3 11h8V3H3zm2-6h4v4H5zm8-2v8h8V3zm6 6h-4V5h4zm-12 10h2v2H7zm3 0h2v2h-2zm3 0h2v2h-2zm-3 3h2v2H7zm3 0h2v2h-2zm3 0h2v2h-2z"/></svg>Kod QR</button>
-    <button><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-8 2-8 6h16c0-4-4-6-8-6z"/></svg>Więcej</button>
-</nav>
-
-<script>
-    function updateClock() {
-        const now = new Date();
-        const options = { hour:'2-digit', minute:'2-digit', second:'2-digit', day:'2-digit', month:'2-digit', year:'numeric', hour12:false };
-        document.getElementById('clock').innerText = now.toLocaleString('pl-PL', options).replace(',', '');
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-</script>
 </body>
 </html>
